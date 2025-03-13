@@ -34,53 +34,53 @@ function App() {
         algorithm: darkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         token: {
           colorPrimary: '#1677ff',
-          // Improved dark mode colors
-          colorTextBase: darkMode ? '#e6f4ff' : '#000', // Slightly bluer white for better readability
-          colorBgBase: darkMode ? '#111827' : '#fff', // Softer dark background with blue tint
-          colorBgContainer: darkMode ? '#1f2937' : '#fff', // Lighter container background
-          colorTextSecondary: darkMode ? '#cbd5e1' : '#666', // Higher contrast secondary text
-          colorBorder: darkMode ? '#374151' : '#d9d9d9', // More visible borders
-          borderRadius: 6, // Slightly rounded corners for all components
+
+          colorTextBase: darkMode ? '#e6f4ff' : '#000',
+          colorBgBase: darkMode ? '#111827' : '#fff',
+          colorBgContainer: darkMode ? '#1f2937' : '#fff',
+          colorTextSecondary: darkMode ? '#cbd5e1' : '#666',
+          colorBorder: darkMode ? '#374151' : '#d9d9d9',
+          borderRadius: 6,
         },
         components: {
           Layout: {
-            headerBg: darkMode ? '#0f172a' : '#fff', // Darker header for contrast
-            siderBg: darkMode ? '#111827' : '#fff', // Matching sidebar
-            bodyBg: darkMode ? '#111827' : '#f0f2f5', // Main content area
+            headerBg: darkMode ? '#0f172a' : '#fff',
+            siderBg: darkMode ? '#111827' : '#fff',
+            bodyBg: darkMode ? '#111827' : '#f0f2f5',
           },
           Card: {
-            colorBgContainer: darkMode ? '#1f2937' : '#fff', // Card background
+            colorBgContainer: darkMode ? '#1f2937' : '#fff',
             boxShadow: darkMode
               ? '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2)'
-              : '0 1px 2px rgba(0, 0, 0, 0.1)', // Enhanced shadows for depth
+              : '0 1px 2px rgba(0, 0, 0, 0.1)',
           },
           Table: {
             colorBgContainer: darkMode ? '#1f2937' : '#fff',
-            headerBg: darkMode ? '#374151' : '#fafafa', // Distinct header
+            headerBg: darkMode ? '#374151' : '#fafafa',
           },
           Button: {
-            colorText: darkMode ? '#e6f4ff' : '#000', // Button text
-            colorBgTextHover: darkMode ? '#374151' : '#f0f0f0', // Text button hover
+            colorText: darkMode ? '#e6f4ff' : '#000',
+            colorBgTextHover: darkMode ? '#374151' : '#f0f0f0',
           },
           Input: {
-            colorBgContainer: darkMode ? '#374151' : '#fff', // Input background
-            colorBorder: darkMode ? '#4b5563' : '#d9d9d9', // Input border
+            colorBgContainer: darkMode ? '#374151' : '#fff',
+            colorBorder: darkMode ? '#4b5563' : '#d9d9d9',
           },
           Select: {
-            colorBgContainer: darkMode ? '#374151' : '#fff', // Select background
-            colorBorder: darkMode ? '#4b5563' : '#d9d9d9', // Select border
+            colorBgContainer: darkMode ? '#374151' : '#fff',
+            colorBorder: darkMode ? '#4b5563' : '#d9d9d9',
           },
           Menu: {
-            colorItemBg: darkMode ? '#111827' : '#fff', // Menu background
-            colorItemText: darkMode ? '#e6f4ff' : '#000', // Menu text
-            colorItemTextSelected: '#1677ff', // Selected menu item text
-            colorItemBgSelected: darkMode ? '#1e293b' : '#e6f4ff', // Selected menu background
+            colorItemBg: darkMode ? '#111827' : '#fff',
+            colorItemText: darkMode ? '#e6f4ff' : '#000',
+            colorItemTextSelected: '#1677ff',
+            colorItemBgSelected: darkMode ? '#1e293b' : '#e6f4ff',
           },
           Drawer: {
-            colorBgElevated: darkMode ? '#1f2937' : '#fff', // Drawer background
+            colorBgElevated: darkMode ? '#1f2937' : '#fff',
           },
           Modal: {
-            colorBgElevated: darkMode ? '#1f2937' : '#fff', // Modal background
+            colorBgElevated: darkMode ? '#1f2937' : '#fff',
           },
         },
       }}
@@ -88,7 +88,6 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
-            {/* Public routes - redirect to dashboard if already logged in */}
             <Route
               path='/login'
               element={
@@ -106,7 +105,6 @@ function App() {
               }
             />
 
-            {/* Protected routes - require authentication */}
             <Route
               path='/dashboard'
               element={
@@ -130,10 +128,8 @@ function App() {
               }
             />
 
-            {/* Default route */}
             <Route path='/' element={<Navigate to='/dashboard' replace />} />
 
-            {/* Catch-all route for undefined routes */}
             <Route path='*' element={<Navigate to='/dashboard' replace />} />
           </Routes>
         </Router>

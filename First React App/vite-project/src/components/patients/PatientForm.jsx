@@ -1,5 +1,3 @@
-'use client';
-
 import { Form, Input, Select, Switch, Row, Col, Tabs } from 'antd';
 import AvatarUpload from './AvatarUpload';
 

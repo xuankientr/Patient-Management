@@ -34,7 +34,6 @@ const AvatarUpload = ({ avatarUrl, onAvatarChange, darkMode }) => {
     }
 
     if (info.file.status === 'done') {
-      // Get the base64 URL from the file reader
       getBase64(info.file.originFileObj, (url) => {
         setLoading(false);
         setImageUrl(url);
@@ -49,7 +48,6 @@ const AvatarUpload = ({ avatarUrl, onAvatarChange, darkMode }) => {
     reader.readAsDataURL(img);
   };
 
-  // Custom request to handle the file without actually uploading to a server
   const customRequest = ({ file, onSuccess }) => {
     setTimeout(() => {
       onSuccess('ok');

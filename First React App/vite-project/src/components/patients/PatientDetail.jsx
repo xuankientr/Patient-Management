@@ -12,8 +12,6 @@ import { Typography } from 'antd';
 const { Title } = Typography;
 const { TabPane } = Tabs;
 
-// Update the PatientDetail component for better dark mode styling
-// Add darkMode to the props
 const PatientDetail = ({
   patient,
   activeTab,
@@ -93,7 +91,6 @@ const PatientDetail = ({
               </div>
             </div>
 
-            {/* Apply similar styling to other fields */}
             <div className='flex items-center'>
               <PhoneOutlined
                 className={`mr-2 ${
@@ -150,7 +147,6 @@ const PatientDetail = ({
               </div>
             </div>
 
-            {/* Continue with similar styling for other fields */}
             <div className='flex items-center'>
               <HomeOutlined
                 className={`mr-2 ${
@@ -314,8 +310,6 @@ const PatientDetail = ({
             )}
           </div>
         </TabPane>
-
-        {/* Apply similar styling to other tabs */}
       </Tabs>
 
       <Divider className={darkMode ? 'border-gray-700' : ''} />

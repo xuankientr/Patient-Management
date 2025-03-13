@@ -45,7 +45,7 @@ a {
   background-color: #374151 !important;
 }
 
-/* Dark mode enhancements */
+
 .dark-mode-text {
   color: #e6f4ff;
 }
@@ -54,19 +54,19 @@ a {
   background-color: #111827;
 }
 
-/* Improved table styles for dark mode */
+
 .ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Card hover effects */
+
 .ant-card-hoverable:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
   transition: all 0.3s;
 }
 
-/* Smooth transitions for dark/light mode changes */
+
 body,
 .ant-layout,
 .ant-card,
@@ -79,7 +79,7 @@ body,
     border-color 0.3s ease;
 }
 
-/* Login page animations */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -108,7 +108,7 @@ body,
   animation: slideUp 0.5s ease-out;
 }
 
-/* Loading overlay animation */
+
 .loading-overlay {
   animation: fadeIn 0.3s ease-out;
 }

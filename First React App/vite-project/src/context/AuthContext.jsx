@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }) => {
 
     checkAuthStatus();
 
-    // Set up interval to check auth status periodically
     const intervalId = setInterval(checkAuthStatus, 60000); // Check every minute
 
     return () => clearInterval(intervalId);
@@ -47,7 +46,6 @@ export const AuthProvider = ({ children }) => {
     setAuthError(null);
 
     try {
-      // Simulate network delay for better UX feedback
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const userData = await apiLogin(email, password);
@@ -67,9 +65,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    // Show loading message
     message.loading('Logging out...', 1, () => {
-      // After loading completes, clear user data and show success message
       setUser(null);
       localStorage.removeItem('user');
       localStorage.removeItem('loginTime');
@@ -77,7 +73,6 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  // Refresh the session to extend the token lifetime
   const refreshSession = () => {
     if (user) {
       const loginTime = new Date().getTime();

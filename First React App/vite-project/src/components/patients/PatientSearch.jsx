@@ -7,10 +7,10 @@ import {
 
 const PatientSearch = ({
   searchText,
-  handleSearchInputChange, // Changed from handleSearch to handleSearchInputChange
+  handleSearchInputChange,
   viewMode,
   setViewMode,
-  isSearching, // New prop to show loading state
+  isSearching,
 }) => {
   return (
     <div className='flex justify-between items-center mb-4'>

@@ -38,19 +38,19 @@ const PatientList = ({ toggleDarkMode, darkMode }) => {
   const [activeTab, setActiveTab] = useState('1');
   const [filteredPatients, setFilteredPatients] = useState([]);
 
-  // Debounce the search text with a 3-second delay
+  
   const debouncedSearchText = useDebounce(searchText, 1500);
 
   useEffect(() => {
     fetchPatients();
   }, []);
 
-  // Effect to filter patients when the debounced search text changes
+  
   useEffect(() => {
     if (patients.length > 0) {
       setIsSearching(true);
 
-      // Filter the patients based on the debounced search text
+      
       const filtered = patients.filter(
         (patient) =>
           (patient.name?.toLowerCase() || '').includes(
@@ -75,7 +75,7 @@ const PatientList = ({ toggleDarkMode, darkMode }) => {
       const response = await api.get('/patients');
       const data = response.data || [];
       setPatients(data);
-      setFilteredPatients(data); // Initialize filtered patients with all patients
+      setFilteredPatients(data); 
     } catch (error) {
       console.error('Error fetching patients:', error);
       message.error('Failed to fetch patients');
@@ -90,10 +90,10 @@ const PatientList = ({ toggleDarkMode, darkMode }) => {
     setCollapsed(!collapsed);
   };
 
-  // Handle input change without immediate filtering
+  
   const handleSearchInputChange = (e) => {
     setSearchText(e.target.value);
-    setIsSearching(true); // Show searching state immediately when typing
+    setIsSearching(true); 
   };
 
   const showAddModal = () => {
