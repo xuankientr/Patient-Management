@@ -1,0 +1,42 @@
+import { Input, Button } from 'antd';
+import {
+  SearchOutlined,
+  TableOutlined,
+  AppstoreOutlined,
+} from '@ant-design/icons';
+
+const PatientSearch = ({
+  searchText,
+  handleSearchInputChange, // Changed from handleSearch to handleSearchInputChange
+  viewMode,
+  setViewMode,
+  isSearching, // New prop to show loading state
+}) => {
+  return (
+    <div className='flex justify-between items-center mb-4'>
+      <Input
+        placeholder='Search patients...'
+        prefix={<SearchOutlined />}
+        value={searchText}
+        onChange={handleSearchInputChange}
+        className='w-64'
+        allowClear
+        loading={isSearching} // Show loading indicator when search is in progress
+      />
+      <div className='flex'>
+        <Button
+          type={viewMode === 'table' ? 'primary' : 'default'}
+          icon={<TableOutlined />}
+          onClick={() => setViewMode('table')}
+        />
+        <Button
+          type={viewMode === 'grid' ? 'primary' : 'default'}
+          icon={<AppstoreOutlined />}
+          onClick={() => setViewMode('grid')}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default PatientSearch;

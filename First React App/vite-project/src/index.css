@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.ant-layout {
+  background: #f0f2f5;
+}
+
+.ant-layout-header {
+  background: #fff;
+  padding: 0 16px;
+}
+
+.ant-layout-content {
+  margin: 16px;
+}
+
+.ant-card {
+  border-radius: 8px;
+}
+
+.dark-row {
+  background-color: #1f2937 !important;
+}
+
+.dark-row:hover {
+  background-color: #374151 !important;
+}
+
+.dark-mode-text {
+  color: #e6f4ff;
+}
+
+.dark-mode-bg {
+  background-color: #111827;
+}
+
+/* Improved table styles for dark mode */
+.ant-table-wrapper .ant-table-tbody > tr.ant-table-row:hover > td {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Card hover effects */
+.ant-card-hoverable:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s;
+}
+
+/* Smooth transitions for dark/light mode changes */
+body,
+.ant-layout,
+.ant-card,
+.ant-table,
+.ant-input,
+.ant-select,
+.ant-drawer,
+.ant-modal {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
