@@ -321,9 +321,7 @@ const PatientDetail = ({
       <Divider className={darkMode ? 'border-gray-700' : ''} />
 
       <div>
-        <Title level={5} className={darkMode ? 'text-gray-200' : ''}>
-          Danger Zone
-        </Title>
+        <Title level={5} className={darkMode ? 'text-gray-200' : ''}></Title>
         <Popconfirm
           title='Are you sure you want to delete this patient?'
           onConfirm={() => handleDeletePatient(patient.id)}

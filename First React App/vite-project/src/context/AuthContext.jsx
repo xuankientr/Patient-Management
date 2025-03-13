@@ -1,68 +1,87 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import { message } from 'antd';
-import { login } from '../services/api';
+import { login as apiLogin } from '../services/api';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [authError, setAuthError] = useState(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    const loginTime = localStorage.getItem('loginTime');
+    const checkAuthStatus = () => {
+      const storedUser = localStorage.getItem('user');
+      const loginTime = localStorage.getItem('loginTime');
 
-    if (storedUser && loginTime) {
-      const parsedUser = JSON.parse(storedUser);
-      const now = new Date().getTime();
+      if (storedUser && loginTime) {
+        const parsedUser = JSON.parse(storedUser);
+        const now = new Date().getTime();
 
-      // Changed from 1 hour to 5 minutes (300000 ms) for token expiration
-      const fiveMinutes = 5 * 60 * 1000;
+        // Token expiration time (5 minutes)
+        const fiveMinutes = 5 * 60 * 1000;
 
-      if (now - Number.parseInt(loginTime) < fiveMinutes) {
-        setUser(parsedUser);
-      } else {
-        localStorage.removeItem('user');
-        localStorage.removeItem('loginTime');
-        setUser(null);
-        message.info('Your session has expired. Please log in again.');
+        if (now - Number.parseInt(loginTime) < fiveMinutes) {
+          setUser(parsedUser);
+        } else {
+          // Clear expired session
+          localStorage.removeItem('user');
+          localStorage.removeItem('loginTime');
+          setUser(null);
+          message.info('Your session has expired. Please log in again.');
+        }
       }
-    }
-    setLoading(false);
+      setLoading(false);
+    };
+
+    checkAuthStatus();
+
+    // Set up interval to check auth status periodically
+    const intervalId = setInterval(checkAuthStatus, 60000); // Check every minute
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const loginUser = async (email, password) => {
+    setLoading(true);
+    setAuthError(null);
+
     try {
-      setLoading(true);
-      const userData = await login(email, password);
+      // Simulate network delay for better UX feedback
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      const userData = await apiLogin(email, password);
+
       setUser(userData);
       const loginTime = new Date().getTime();
       localStorage.setItem('loginTime', loginTime.toString());
       localStorage.setItem('user', JSON.stringify(userData));
-      message.success('Login successful!');
+
+      setLoading(false);
       return true;
     } catch (error) {
-      message.error(error.message || 'Login failed. Please try again.');
-      console.error('Login error:', error);
-      return false;
-    } finally {
+      setAuthError(error.message || 'Login failed. Please try again.');
       setLoading(false);
+      throw error;
     }
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('loginTime');
-    message.success('Logout successful!');
+    // Show loading message
+    message.loading('Logging out...', 1, () => {
+      // After loading completes, clear user data and show success message
+      setUser(null);
+      localStorage.removeItem('user');
+      localStorage.removeItem('loginTime');
+      message.success('Logout successful!');
+    });
   };
 
-  // Add a method to refresh the token/session
+  // Refresh the session to extend the token lifetime
   const refreshSession = () => {
     if (user) {
       const loginTime = new Date().getTime();
       localStorage.setItem('loginTime', loginTime.toString());
-      message.success('Session refreshed successfully!');
       return true;
     }
     return false;
@@ -73,6 +92,7 @@ export const AuthProvider = ({ children }) => {
     login: loginUser,
     logout,
     loading,
+    authError,
     refreshSession,
   };
 

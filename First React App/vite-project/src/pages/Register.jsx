@@ -27,18 +27,15 @@ const Register = () => {
 
       console.log('Registering user with data:', userData);
 
-      // Gọi API đăng ký người dùng
       const response = await register(userData);
 
       console.log('Registration response:', response);
 
-      // Lưu thông báo vào localStorage để hiển thị trên trang login
       localStorage.setItem(
         'registerMessage',
-        '🎉 Registration successful! Please log in.'
+        'Registration successful! Please log in.'
       );
 
-      // Chuyển hướng ngay lập tức đến /login
       navigate('/login', { replace: true });
     } catch (error) {
       console.error('Registration error:', error);

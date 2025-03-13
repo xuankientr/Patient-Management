@@ -95,11 +95,6 @@ const PatientForm = ({
                   </Select>
                 </Form.Item>
               </Col>
-              <Col span={12}>
-                <Form.Item name='active' label='Active' valuePropName='checked'>
-                  <Switch />
-                </Form.Item>
-              </Col>
             </Row>
             <Form.Item name='address' label='Address'>
               <Input.TextArea rows={2} placeholder='Enter address' />
@@ -199,11 +194,6 @@ const PatientForm = ({
                   <Select.Option value='Active'>Active</Select.Option>
                   <Select.Option value='Inactive'>Inactive</Select.Option>
                 </Select>
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Form.Item name='active' label='Active' valuePropName='checked'>
-                <Switch />
               </Form.Item>
             </Col>
           </Row>

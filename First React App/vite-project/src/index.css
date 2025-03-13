@@ -45,6 +45,7 @@ a {
   background-color: #374151 !important;
 }
 
+/* Dark mode enhancements */
 .dark-mode-text {
   color: #e6f4ff;
 }
@@ -76,4 +77,42 @@ body,
 .ant-modal {
   transition: background-color 0.3s ease, color 0.3s ease,
     border-color 0.3s ease;
+}
+
+/* Login page animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.login-form {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Loading overlay animation */
+.loading-overlay {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.loading-content {
+  animation: slideUp 0.3s ease-out;
 }
