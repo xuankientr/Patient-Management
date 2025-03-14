@@ -6,6 +6,20 @@
       "email": "admin@kientrinh.com",
       "password": "123456",
       "createdAt": "2025-03-13T09:21:13.844Z"
+    },
+    {
+      "id": "6729",
+      "fullName": "Ronaldo",
+      "email": "ronaldo@gmail.com",
+      "password": "123456",
+      "createdAt": "2025-03-14T00:32:04.138Z"
+    },
+    {
+      "id": "60dc",
+      "fullName": "Messi",
+      "email": "messi@gmail.com",
+      "password": "123456",
+      "createdAt": "2025-03-14T00:32:30.264Z"
     }
   ],
   "patients": [

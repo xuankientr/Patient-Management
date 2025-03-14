@@ -21,7 +21,7 @@ const PatientSearch = ({
         onChange={handleSearchInputChange}
         className='w-64'
         allowClear
-        loading={isSearching} // Show loading indicator when search is in progress
+        loading={isSearching}
       />
       <div className='flex'>
         <Button

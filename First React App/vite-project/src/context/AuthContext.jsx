@@ -18,13 +18,11 @@ export const AuthProvider = ({ children }) => {
         const parsedUser = JSON.parse(storedUser);
         const now = new Date().getTime();
 
-        // Token expiration time (5 minutes)
         const fiveMinutes = 5 * 60 * 1000;
 
         if (now - Number.parseInt(loginTime) < fiveMinutes) {
           setUser(parsedUser);
         } else {
-          // Clear expired session
           localStorage.removeItem('user');
           localStorage.removeItem('loginTime');
           setUser(null);
@@ -36,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     checkAuthStatus();
 
-    const intervalId = setInterval(checkAuthStatus, 60000); // Check every minute
+    const intervalId = setInterval(checkAuthStatus, 60000);
 
     return () => clearInterval(intervalId);
   }, []);

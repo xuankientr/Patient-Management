@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'http://localhost:3000',
 });
 
 api.interceptors.request.use(
@@ -20,26 +20,22 @@ api.interceptors.request.use(
   }
 );
 
-
 export const checkEmailExists = async (email) => {
   try {
     const response = await api.get(`/users?email=${email}`);
-    return response.data.length > 0; 
+    return response.data.length > 0;
   } catch (error) {
     throw new Error('Error checking email existence');
   }
 };
 
-
 export const register = async (userData) => {
   try {
-    
     const emailExists = await checkEmailExists(userData.email);
     if (emailExists) {
       throw new Error('Email already exists');
     }
 
-   
     const response = await api.post('/users', userData);
     return response.data;
   } catch (error) {
